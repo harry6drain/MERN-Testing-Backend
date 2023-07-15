@@ -6,7 +6,7 @@ module.exports = {
   deploy: {
     production: {
       user: 'ubuntu',
-      host: '172.31.10.39',
+      host: '13.59.254.124',
       key: '~/.ssh/Harry-Key-Pair.pem',
       ref: 'origin/main',
       repo: 'git@github.com:harry6drain/MERN-Testing-Backend.git',

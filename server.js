@@ -21,7 +21,7 @@ connection.once('open',() => {
 })
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
+  res.sendFile(path.join(__dirname, '..','frontend','build','index.html'));
 });
 
 app.use("/workouts",workOutRoutes)

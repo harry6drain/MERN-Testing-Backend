@@ -23,7 +23,7 @@ connection.once('open',() => {
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
-app.use("/",workOutRoutes)
+app.use("/workouts",workOutRoutes)
 
 const port = process.env.PORT || 4000
 

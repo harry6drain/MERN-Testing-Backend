@@ -1,4 +1,4 @@
-var whitelist = ["https://extrackerdemo.fun", "http://13.59.254.124/"];
+var whitelist = ["https://extrackerdemo.fun:4000", "http://13.59.254.124:4000/"];
 var corsOptions = {
     origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {

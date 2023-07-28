@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors(corsOptions))
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'build')));
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
@@ -20,9 +20,9 @@ connection.once('open',() => {
     console.log("MongoDB connection established successfully!")
 })
 
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+// app.get('/', function(req, res) {
+//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 app.use("/workouts",workOutRoutes)
 
 const port = process.env.PORT || 4000

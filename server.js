@@ -2,16 +2,20 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const workOutRoutes = require("./routes/workouts")
+const userRoutes = require("./routes/auth")
 const corsOptions = require("./config/corsOption")
-const path = require("path")
+const cookieParser = require("cookie-parser")
+const verfiyJWT = require("./middleware/verifyJWT");
+const verifyJWT = require("./middleware/verifyJWT");
+// const path = require("path")
 
 require("dotenv").config();
 
 const app = express();
 
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, 'build')));
+app.use(cookieParser())
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
@@ -20,10 +24,8 @@ connection.once('open',() => {
     console.log("MongoDB connection established successfully!")
 })
 
-// app.get('/', function(req, res) {
-//   res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-// app.use(express.static('build'))
+app.use("/user",userRoutes)
+app.use(verifyJWT)
 app.use("/workouts",workOutRoutes)
 
 const port = process.env.PORT || 4000
